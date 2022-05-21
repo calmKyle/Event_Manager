@@ -73,6 +73,7 @@ public class repertoireList {
     }
 
     public void stageDistribution(StageList stageList) {
+        sortListByPriority();
         ArrayList<Repertoire> list1 = list;
         sortListByPriority();
         for (int i = 0 ; i < list.size(); i++) {
