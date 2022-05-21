@@ -85,7 +85,7 @@ public class MainForm extends JFrame {
                 repertoireList.stageDistribution(stageList);
                 DefaultSchedule.addRow(new Object[] {rep.getID(),rep.getName(),
                         rep.getDay().toString(),rep.getTime().toString(),
-                        rep.getPriority()});
+                        rep.getCurrentStage().getNameOfStage()});
 
             }
         });
@@ -101,7 +101,7 @@ public class MainForm extends JFrame {
         DefaultStage.addColumn("ID");
         DefaultStage.addColumn("Stage's Name");
         StageTable.setModel(DefaultStage);
-        stageList.addFromFile("D:\\stage\\src\\Data\\Stage.txt");
+        stageList.addFromFile("D:\\New folder\\stage\\src\\Data\\Stage.txt");
         for (int i = 0 ; i < stageList.numberOfRepertoire() ; i++) {
             DefaultStage.addRow(new Object[] {stageList.getStagesList().get(i).getID(),stageList.getStagesList().get(i).getNameOfStage()});
         }
@@ -113,14 +113,14 @@ public class MainForm extends JFrame {
         DefaultSchedule.addColumn("Repertoire's Name");
         DefaultSchedule.addColumn("Day");
         DefaultSchedule.addColumn("Time of Repertoire");
-        DefaultSchedule.addColumn("Priority");
+        DefaultSchedule.addColumn("Stage");
         scheduleTable.setModel(DefaultSchedule);
-        repertoireList.addFromFile("D:\\stage\\src\\Data\\Repertoire.txt");
+        repertoireList.addFromFile("D:\\New folder\\stage\\src\\Data\\Repertoire.txt");
         repertoireList.stageDistribution(stageList);
         for (int i = 0 ; i < repertoireList.numberOfRepertoire() ; i++) {
             DefaultSchedule.addRow(new Object[] {repertoireList.getList().get(i).getID(),repertoireList.getList().get(i).getName(),
                     repertoireList.getList().get(i).getDay().toString(),repertoireList.getList().get(i).getTime().toString(),
-                    repertoireList.getList().get(i).getPriority()});
+                    repertoireList.getList().get(i).getCurrentStage().getNameOfStage()});
         }
     }
 
@@ -137,7 +137,7 @@ public class MainForm extends JFrame {
     }
 
     public Repertoire WritetoRepertoire() throws IOException {
-        FileWriter fw = new FileWriter("D:\\stage\\src\\Data\\Repertoire.txt",true);
+        FileWriter fw = new FileWriter("D:\\New folder\\stage\\src\\Data\\Repertoire.txt",true);
         BufferedWriter bw = new BufferedWriter(fw);
         String rep = textField6.getText() + "-" + textField1.getText() + "-" + "0/0/0" + "-" + textField4.getText() +
                 "-" + textField3.getText();

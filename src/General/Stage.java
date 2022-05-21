@@ -74,6 +74,7 @@ public class Stage {
     public void addRepertoire(Repertoire repertoire) {
         NumberOfrepertoires += 1;
         repertoiresInStage.add(repertoire);
+        repertoire.setCurrentStage(this);
         int second = repertoire.getTime().convertToSecond();
         repertoiresInStage.get(repertoiresInStage.size() - 1).setTime(new Time(currentTime.convertToSecond() + 600));
         currentTime.secondToTime(currentTime.convertToSecond() + 600 + second);
