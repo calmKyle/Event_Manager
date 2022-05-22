@@ -305,6 +305,4 @@ public class MainForm extends JFrame {
         fw.close();
         return a;
     }
-
-
 }
