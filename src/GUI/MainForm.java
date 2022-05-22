@@ -32,6 +32,7 @@ public class MainForm extends JFrame {
     private JButton showButton;
     private JTextField textField6;
     private JButton removeStageButton;
+    private JLabel notice;
     private DefaultTableModel DefaultStage;
     private DefaultTableModel DefaultSchedule;
     private repertoireList repertoireList = new repertoireList();
@@ -83,46 +84,54 @@ public class MainForm extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Repertoire rep = new Repertoire();
-                try {
-                    rep = WritetoRepertoire();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                if (!textField1.getText().isEmpty() && !textField3.getText().isEmpty() && !textField4.getText().isEmpty() && !textField6.getText().isEmpty()) {
+                    Repertoire rep = new Repertoire();
+                    try {
+                        rep = WritetoRepertoire();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    repertoireList.getList().add(rep);
+                    repertoireList.stageDistribution(stageList);
+                    DefaultSchedule.addRow(new Object[]{rep.getID(), rep.getName(),
+                            rep.getDay().toString(), rep.getTime().toString(),
+                            rep.getCurrentStage().getNameOfStage()});
+                    frame.setVisible(false);
+                    try {
+                        frame = new MainForm("Stage");
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    frame.setVisible(true);
+                } else {
+                    notice.setText("Data of repertoire is null");
                 }
-                repertoireList.getList().add(rep);
-                repertoireList.stageDistribution(stageList);
-                DefaultSchedule.addRow(new Object[] {rep.getID(),rep.getName(),
-                        rep.getDay().toString(),rep.getTime().toString(),
-                        rep.getCurrentStage().getNameOfStage()});
-                frame.setVisible(false);
-                try {
-                    frame = new MainForm("Stage");
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                frame.setVisible(true);
             }
         });
         addStageButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Stage stage1 = new Stage();
-                try {
-                    stage1 = WritetoStage();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                if (textField5.getText().isEmpty() || textField2.getText().isEmpty()) {
+                    notice.setText("Stage's ID or Stage's name is Null");
+                } else if (!textField5.getText().isEmpty() && !textField2.getText().isEmpty()) {
+                    Stage stage1 = new Stage();
+                    try {
+                        stage1 = WritetoStage();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    stageList.getStagesList().add(stage1);
+                    repertoireList.stageDistribution(stageList);
+                    DefaultStage.addRow(new Object[]{stage1.getID(), stage1.getNameOfStage()});
+                    frame.setVisible(false);
+                    try {
+                        frame = new MainForm("Stage");
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    frame.setVisible(true);
                 }
-                stageList.getStagesList().add(stage1);
-                repertoireList.stageDistribution(stageList);
-                DefaultStage.addRow(new Object[] {stage1.getID(),stage1.getNameOfStage()});
-                frame.setVisible(false);
-                try {
-                    frame = new MainForm("Stage");
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                frame.setVisible(true);
             }
         });
         removeButton.addMouseListener(new MouseAdapter() {
