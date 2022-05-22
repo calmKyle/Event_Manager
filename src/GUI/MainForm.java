@@ -38,8 +38,8 @@ public class MainForm extends JFrame {
     private repertoireList repertoireList = new repertoireList();
     private StageList stageList = new StageList();
 
-    private String dataStage = "D:\\New folder\\stage\\src\\Data\\Stage.txt";
-    private String dataRepertoire = "D:\\New folder\\stage\\src\\Data\\Repertoire.txt";
+    private String dataStage = "C:\\Users\\kytro\\OneDrive\\MainDocs\\GitHub\\Project3\\src\\Data\\Stage.txt";
+    private String dataRepertoire = "C:\\Users\\kytro\\OneDrive\\MainDocs\\GitHub\\Project3\\src\\Data\\Repertoire.txt";
 
     private static JFrame frame;
 
@@ -104,6 +104,7 @@ public class MainForm extends JFrame {
                     }
                     frame.setVisible(true);
                 } else {
+                    notice.setForeground(Color.RED);
                     notice.setText("Data of repertoire is null");
                 }
             }
@@ -113,6 +114,7 @@ public class MainForm extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (textField5.getText().isEmpty() || textField2.getText().isEmpty()) {
+                    notice.setForeground(Color.RED);
                     notice.setText("Stage's ID or Stage's name is Null");
                 } else if (!textField5.getText().isEmpty() && !textField2.getText().isEmpty()) {
                     Stage stage1 = new Stage();
