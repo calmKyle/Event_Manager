@@ -33,7 +33,7 @@ public class StageView extends JFrame{
     public void addObject(Stage stage) {
         for (int i = 0 ; i < stage.getRepertoiresInStage().size();i++) {
             DefaultStage.addRow(new Object[] {stage.getRepertoiresInStage().get(i).getID(),stage.getRepertoiresInStage().get(i).getName(),
-                    stage.getRepertoiresInStage().get(i).getDay().toString(),stage.getRepertoiresInStage().get(i).getTime().toString(),
+                    stage.getRepertoiresInStage().get(i).getDay().toString(),stage.getRepertoiresInStage().get(i).getTime1().toString(),
                     stage.getRepertoiresInStage().get(i).getPriority()});
         }
     }

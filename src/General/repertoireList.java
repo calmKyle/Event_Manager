@@ -72,7 +72,16 @@ public class repertoireList {
         return false;
     }
 
+    public void clearAll(StageList stageList) {
+        for (Stage stage : stageList.getStagesList()) {
+            for (int i = 0 ; i < stage.getRepertoiresInStage().size() ; i++) {
+                stage.getRepertoiresInStage().set(i,null);
+            }
+        }
+    }
+
     public void stageDistribution(StageList stageList) {
+        clearAll(stageList);
         sortListByPriority();
         ArrayList<Repertoire> list1 = list;
         sortListByPriority();

@@ -1,16 +1,12 @@
 package General;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Repertoire {
     private int ID;
     private String Name;
 
     private Day day;
     private Time time;
+    private Time time1;
     private int priority;
 
     private Stage CurrentStage;
@@ -28,6 +24,7 @@ public class Repertoire {
         Name = name;
         this.day = new Day("0/0/0");
         this.time = time;
+        this.time1 = new Time("0:0:0");
         this.priority = priority;
         CurrentStage = null;
         Sort = false;
@@ -39,6 +36,7 @@ public class Repertoire {
             Name = Txt[1];
             this.day = new Day("0/0/0");
             this.time = new Time(Txt[3]);
+            this.time1 = new Time("0:0:0");
             this.priority = Integer.parseInt(Txt[4]);
             CurrentStage = null;
             Sort = false;
@@ -98,5 +96,17 @@ public class Repertoire {
 
     public void setSort(boolean sort) {
         Sort = sort;
+    }
+
+    public Time getTime1() {
+        return time1;
+    }
+
+    public void setTime1(Time time1) {
+        this.time1 = time1;
+    }
+
+    public String toString() {
+        return Integer.toString(ID) + "-" + getName() + "-" + day.toString() + "-" + time.toString() + "-" + Integer.toString(priority);
     }
 }

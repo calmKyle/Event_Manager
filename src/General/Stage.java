@@ -16,6 +16,9 @@ public class Stage {
         NumberOfrepertoires = numberOfrepertoires;
     }
 
+    public Stage() {
+    }
+
     public Stage(String stage) {
         String[] Txt = stage.split("-");
         this.ID = Integer.parseInt(Txt[0]);
@@ -76,7 +79,7 @@ public class Stage {
         repertoiresInStage.add(repertoire);
         repertoire.setCurrentStage(this);
         int second = repertoire.getTime().convertToSecond();
-        repertoiresInStage.get(repertoiresInStage.size() - 1).setTime(new Time(currentTime.convertToSecond() + 600));
+        repertoiresInStage.get(repertoiresInStage.size() - 1).setTime1(new Time(currentTime.convertToSecond() + 600));
         currentTime.secondToTime(currentTime.convertToSecond() + 600 + second);
         if (currentTime.convertToSecond() > 82800) {
             repertoire.setDay(new Day("22/12/2021"));
@@ -101,11 +104,19 @@ public class Stage {
     }
 
     public boolean isHave(Repertoire repertoire) {
-        for (Repertoire a : repertoiresInStage) {
-            if (repertoire.getName().equals(a.getName())) {
-                return true;
+        if (repertoiresInStage.size() != 0) {
+            for (Repertoire a : repertoiresInStage) {
+                if (a != null) {
+                    if (repertoire.getName().equals(a.getName())) {
+                        return true;
+                    }
+                }
             }
         }
         return false;
+    }
+
+    public String toString() {
+        return Integer.toString(ID) + "-" + getNameOfStage() + "-" + "0";
     }
 }
