@@ -28,6 +28,7 @@ public class StageList {
         stagesList.add(stage);
     }
 
+    //add data from file to table
     public void addFromFile(String file) throws IOException {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
@@ -41,6 +42,7 @@ public class StageList {
         }
     }
 
+    //Get stage
     public void getStageAtleast(Repertoire repertoire) {
         Stage stage = stagesList.get(0);
         for (int i = 0; i < stagesList.size(); i++) {

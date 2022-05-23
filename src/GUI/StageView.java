@@ -11,6 +11,7 @@ public class StageView extends JFrame{
     private JTable stageview;
     private DefaultTableModel DefaultStage;
 
+    //Create other Stage table
     public void createStageTable(Stage stage) throws IOException {
         DefaultStage = new DefaultTableModel();
         DefaultStage.addColumn("ID");
@@ -22,6 +23,8 @@ public class StageView extends JFrame{
         addObject(stage);
     }
 
+
+    //creat new pop up window to show time of repertoire
     public StageView(String title,Stage stage) throws IOException {
         super(title);
         createStageTable(stage);
@@ -29,7 +32,8 @@ public class StageView extends JFrame{
         this.setContentPane(panel1);
         this.pack();
     }
-    
+
+    //add object into Stage
     public void addObject(Stage stage) {
         for (int i = 0 ; i < stage.getRepertoiresInStage().size();i++) {
             DefaultStage.addRow(new Object[] {stage.getRepertoiresInStage().get(i).getID(),stage.getRepertoiresInStage().get(i).getName(),

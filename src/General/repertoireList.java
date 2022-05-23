@@ -15,6 +15,7 @@ public class repertoireList {
         list = new ArrayList<Repertoire>();
     }
 
+    //Read data from file txt
     public void addFromFile(String file) throws IOException {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
@@ -36,6 +37,7 @@ public class repertoireList {
         this.list = list;
     }
 
+    //sort the time and data input
     public void sortListByPriority() {
         for (int i = 0 ; i < list.size() ; i++) {
             for (int j = i + 1 ; j < list.size() ; j++) {
@@ -50,6 +52,7 @@ public class repertoireList {
         }
     }
 
+    //sort by date
     public void sortByDay() {
         for (int i = 0 ; i < list.size() ; i++) {
             for (int j = i + 1 ; j < list.size() ; j++) {
@@ -63,6 +66,7 @@ public class repertoireList {
         }
     }
 
+    //checker
     public boolean isHave(Repertoire repertoire, ArrayList<Repertoire> list1) {
         for (Repertoire repertoire1 : list1) {
             if (repertoire1 == repertoire) {
@@ -72,6 +76,7 @@ public class repertoireList {
         return false;
     }
 
+    //clear
     public void clearAll(StageList stageList) {
         for (Stage stage : stageList.getStagesList()) {
             for (int i = 0 ; i < stage.getRepertoiresInStage().size() ; i++) {

@@ -5,12 +5,14 @@ public class Day {
     private int month;
     private int year;
 
+    //create day
     public Day(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
+    //put into string
     public Day(String time) {
         String txt[] = time.split("/");
         this.day = Integer.parseInt(txt[0]);
@@ -18,6 +20,7 @@ public class Day {
         this.year = Integer.parseInt(txt[2]);
     }
 
+    //make it into string dd/mm/yy
     public String toString() {
         return Integer.toString(day) + "/" + Integer.toString(month) + "/" + Integer.toString(year);
     }

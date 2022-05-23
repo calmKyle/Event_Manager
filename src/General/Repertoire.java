@@ -19,6 +19,7 @@ public class Repertoire {
 
     }
 
+    //create Repertoire
     public Repertoire(int ID, String name, Day day, Time time, int priority) {
         this.ID = ID;
         Name = name;
@@ -30,6 +31,7 @@ public class Repertoire {
         Sort = false;
     }
 
+    //read string in Repertoire
     public Repertoire(String read) {
             String[] Txt = read.split("-");
             this.ID = Integer.parseInt(Txt[0]);
