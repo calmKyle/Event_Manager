@@ -105,7 +105,7 @@ public class MainForm extends JFrame {
                     frame.setVisible(true);
                 } else {
                     notice.setForeground(Color.RED);
-                    notice.setText("Data of repertoire is null");
+                    notice.setText("Notice: Data of repertoire is null");
                 }
             }
         });
@@ -115,7 +115,7 @@ public class MainForm extends JFrame {
                 super.mouseClicked(e);
                 if (textField5.getText().isEmpty() || textField2.getText().isEmpty()) {
                     notice.setForeground(Color.RED);
-                    notice.setText("Stage's ID or Stage's name is Null");
+                    notice.setText("Notice: Stage's ID or Stage's name is Null");
                 } else if (!textField5.getText().isEmpty() && !textField2.getText().isEmpty()) {
                     Stage stage1 = new Stage();
                     try {
