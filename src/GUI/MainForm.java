@@ -1,5 +1,11 @@
 package GUI;
 
+/*
+* @author Hoang Ky Trinh
+* @since 11/5/2022
+* */
+
+//import library
 import General.Repertoire;
 import General.Stage;
 import General.StageList;
@@ -18,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainForm extends JFrame {
+    //define all data needed for struct
     private JPanel Mainpanel;
     private JButton addButton;
     private JButton removeButton;
@@ -38,6 +45,7 @@ public class MainForm extends JFrame {
     private repertoireList repertoireList = new repertoireList();
     private StageList stageList = new StageList();
 
+    //Apply string for local storage
     private String dataStage = "C:\\Users\\kytro\\OneDrive\\MainDocs\\GitHub\\Project3\\src\\Data\\Stage.txt";
     private String dataRepertoire = "C:\\Users\\kytro\\OneDrive\\MainDocs\\GitHub\\Project3\\src\\Data\\Repertoire.txt";
 
@@ -45,12 +53,14 @@ public class MainForm extends JFrame {
 
     public MainForm(String title) throws IOException {
         super(title);
-        createStageTable();
-        createScheduleTable();
+        createStageTable();         //create Stage table
+        createScheduleTable();      //create Schedule table
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Mainpanel);
         this.pack();
+
+        //add Button to show each different stage shows have
         showButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = null;
@@ -62,6 +72,8 @@ public class MainForm extends JFrame {
                 frame.setVisible(true);
             }
         });
+
+        //showing stage table and added stages inside main window. Allow user select Stage to show name and id of that stages
         StageTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -70,6 +82,7 @@ public class MainForm extends JFrame {
                 textField2.setText(StageTable.getValueAt(StageTable.getSelectedRow(),0).toString());
             }
         });
+        //showing schedule table and added data inside main window. Allow user select schedules to show information of that data
         scheduleTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -80,6 +93,12 @@ public class MainForm extends JFrame {
                 textField6.setText(scheduleTable.getValueAt(scheduleTable.getSelectedRow(),0).toString());
             }
         });
+
+        /*
+        * Add data button : allow user add data into table
+        * Notice if data is empty
+        * still can improve for validation datas
+        * */
         addButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -109,6 +128,11 @@ public class MainForm extends JFrame {
                 }
             }
         });
+
+        /*
+        * Allow user add more stages
+        * Applied few notice if the box is not fill
+        * Errors: Still have to reload all the window to show*/
         addStageButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -136,6 +160,10 @@ public class MainForm extends JFrame {
                 }
             }
         });
+
+        /*
+        * Allow user to remove data from table
+        * Bug if not clicking on data*/
         removeButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -184,6 +212,10 @@ public class MainForm extends JFrame {
                 frame.setVisible(true);
             }
         });
+
+        /*
+        * Allow user to remove stage from table
+        * same bug as removedata*/
         removeStageButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -235,11 +267,13 @@ public class MainForm extends JFrame {
         });
     }
 
+//Main
     public static void main(String[] args) throws IOException {
         frame = new MainForm("Stage");
         frame.setVisible(true);
     }
 
+    //Create Stage table and show in main window
     private void createStageTable() throws IOException {
         DefaultStage = new DefaultTableModel();
         DefaultStage.addColumn("ID");
@@ -251,6 +285,7 @@ public class MainForm extends JFrame {
         }
     }
 
+    //create schedule and show in main window
     private void createScheduleTable() throws IOException {
         DefaultSchedule = new DefaultTableModel();
         DefaultSchedule.addColumn("ID");
@@ -269,6 +304,7 @@ public class MainForm extends JFrame {
 
     }
 
+    //select stage
     public Stage getSelect() {
         Stage a = null;
         for (Stage stage : stageList.getStagesList()) {
@@ -280,6 +316,7 @@ public class MainForm extends JFrame {
         return a;
     }
 
+    //write the input data into Reptertoire.txt
     public Repertoire WritetoRepertoire() throws IOException {
         FileWriter fw = new FileWriter(dataRepertoire,true);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -293,8 +330,8 @@ public class MainForm extends JFrame {
         return repertoire;
     }
 
-
-        public Stage WritetoStage() throws IOException {
+    //write the input of stage into Stage.txt
+    public Stage WritetoStage() throws IOException {
         FileWriter fw = new FileWriter(dataStage,true);
         BufferedWriter bw = new BufferedWriter(fw);
         String rep = textField2.getText() + "-" + textField5.getText() + "-" + "0";
