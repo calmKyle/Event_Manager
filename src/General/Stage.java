@@ -6,7 +6,7 @@ public class Stage {
     private int ID;
     private String NameOfStage;
     private int NumberOfrepertoires = 0;
-    private Time currentTime = new Time("8:00:00");
+    private Time currentTime = new Time("9:00:00");
 
     private ArrayList<Repertoire> repertoiresInStage = new ArrayList<Repertoire>();
 
@@ -82,10 +82,10 @@ public class Stage {
         repertoiresInStage.get(repertoiresInStage.size() - 1).setTime1(new Time(currentTime.convertToSecond() + 600));
         currentTime.secondToTime(currentTime.convertToSecond() + 600 + second);
         if (currentTime.convertToSecond() > 82800) {
-            repertoire.setDay(new Day("22/12/2021"));
+            repertoire.setDay(new Day("28/05/2022"));
             currentTime.secondToTime(currentTime.convertToSecond()-86400);
         } else {
-            repertoire.setDay(new Day("21/12/2021"));
+            repertoire.setDay(new Day("29/05/2022"));
         }
         repertoire.setSort(true);
 
