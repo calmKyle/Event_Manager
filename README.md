@@ -2,5 +2,6 @@
 
 Run with Intellij IDEA 
 
-cd out/production
+cd out/production/Project3
+
 java GUI/MainForm
