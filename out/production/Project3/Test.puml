@@ -1,0 +1,36 @@
+@startuml
+class Stage {
+    -int ID;
+    private String NameOfStage;
+    private int NumberOfrepertoires;
+    private Day CurrentDay;
+    private Time currentTime = new Time("8:00:00");
+
+    private ArrayList<Repertoire> repertoiresInStage = new ArrayList<Repertoire>();
+
+    + Stage(int ID, String nameOfStage, int numberOfrepertoires)
+
+
+    + int getID()
+
+    + void setID(int ID)
+
+    + String getNameOfStage()
+
+    + void setNameOfStage(String nameOfStage)
+
+    + int getNumberOfrepertoires()
+
+    + void setNumberOfrepertoires(int numberOfrepertoires)
+
+    + ArrayList<Repertoire> getRepertoiresInStage()
+
+    + void setRepertoiresInStage(ArrayList<Repertoire> repertoiresInStage)
+
+    + Time getCurrentTime()
+
+    + void addRepertoire(Repertoire repertoire)
+
+    + boolean iSaddRepertoire(Repertoire repertoire)
+}
+@enduml
